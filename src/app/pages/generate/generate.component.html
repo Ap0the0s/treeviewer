@@ -1,1 +1,32 @@
-<button mat-flat-button color="primary" (click)="generateTree()">Generate</button>
+<div class="generate-form">
+
+    <h2>Please enter some values to generate your tree</h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Root nodes count</mat-label>
+        <input type="number" min="1" matInput placeholder="Enter some number" value="" #root>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Min nested nodes count</mat-label>
+        <input type="number" min="1" matInput placeholder="Enter some number" value="" #min_nested>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Max nested nodes count</mat-label>
+        <input type="number" min="1" matInput placeholder="Enter some number" value="" #max_nested>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Max nesting</mat-label>
+        <input type="number" min="1" matInput placeholder="Enter some number" value="" #max_nesting>
+    </mat-form-field>
+    
+    <button mat-flat-button color="primary" 
+            [disabled]="!root.value || !min_nested.value || !max_nested.value || !max_nesting.value" 
+            (click)="generateTree(+root.value, +min_nested.value, +max_nested.value, +max_nesting.value)"
+    >Generate</button>
+
+    <mat-progress-bar *ngIf="treeService.showProgressBar" mode="indeterminate"></mat-progress-bar>
+
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeService } from 'src/app/services/tree.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { ListNode } from 'src/app/models/ListNode';
+import { ListNode } from 'src/app/models/Models';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({

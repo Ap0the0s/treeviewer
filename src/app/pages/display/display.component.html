@@ -1,4 +1,8 @@
-<div class="empty-message" *ngIf="!treeData.length">You have no generated tree yet..</div>
+<div class="empty-message" *ngIf="!treeData.length">
+    You have no generated tree yet
+    
+    <button mat-flat-button color="primary" routerLink="/generate-tree">Generate a tree</button>
+</div>
 
 <div *ngIf="treeData.length"> 
 

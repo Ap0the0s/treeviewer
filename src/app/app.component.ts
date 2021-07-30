@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'OCCT Angular Material Tree viewer';
-  sidenavStatus = true;
+  sidenavStatus = false;
 
   toogleSidenav() {
     this.sidenavStatus = !this.sidenavStatus;
