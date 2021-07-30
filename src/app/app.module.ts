@@ -8,6 +8,7 @@ import {MaterialModule} from './material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { GenerateComponent } from './pages/generate/generate.component';
 import { DisplayComponent } from './pages/display/display.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DisplayComponent } from './pages/display/display.component';
     AppComponent,
     HomeComponent,
     GenerateComponent,
-    DisplayComponent
+    DisplayComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
