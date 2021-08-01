@@ -10,6 +10,7 @@ import { GenerateComponent } from './pages/generate/generate.component';
 import { DisplayComponent } from './pages/display/display.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
