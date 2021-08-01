@@ -1,19 +1,20 @@
 <mat-toolbar class="sidenav mat-elevation-z6 zindex2">
-  <mat-icon (click)="toogleSidenav()" class="button-pointer">menu</mat-icon>
+  <mat-icon *ngIf="appService.isAuthenticated()" (click)="toogleSidenav()" class="button-pointer">menu</mat-icon>
   <span routerLink="/">Tree viewer</span>
   <span class="toolbar-spacer"></span>
-  <!-- TODO:username -->
-  <span class="toolbar-username">Hello, John Doe</span>
-  <button mat-icon-button disabled>
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <button mat-icon-button disabled>
-   <mat-icon>logout</mat-icon>
- </button>
+  <div *ngIf="appService.isAuthenticated()">
+    <span class="toolbar-username">Hello, {{ appService.getUser()?.name || appService.getUser()?.login || 'John Doe' }}</span>
+    <button mat-icon-button routerLink="profile">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button (click)="appService.logoutUser()">
+     <mat-icon>logout</mat-icon>
+   </button>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container autosize>
-  <mat-sidenav #sidenav mode="side" class="sidenav"
+  <mat-sidenav *ngIf="appService.isAuthenticated()" #sidenav mode="side" class="sidenav"
                [opened]="sidenavStatus">
     <mat-nav-list>
       <mat-list-item routerLink="generate-tree" routerLinkActive="active">

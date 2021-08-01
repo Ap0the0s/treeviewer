@@ -3,6 +3,7 @@ import { TreeService } from 'src/app/services/tree.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { ListNode } from 'src/app/models/Models';
 import { AppService } from 'src/app/services/app.service';
+import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
   selector: 'app-display',
@@ -14,7 +15,7 @@ export class DisplayComponent implements OnInit {
   treeData: ListNode[];
   treeControl: NestedTreeControl<ListNode>;
 
-  constructor(private appService: AppService, private treeService: TreeService, ) { 
+  constructor(private appService: AppService, private treeService: TreeService, private toolsService: ToolsService) { 
     this.treeData = treeService.treeData;
     this.treeControl = treeService.treeControl;
   }
@@ -23,7 +24,7 @@ export class DisplayComponent implements OnInit {
 
   saveTree() {
     this.treeService.saveTree(this.treeService.treeData);
-    this.appService.openSnackBar('Tree was successfully saved', 'Ok');
+    this.toolsService.showSnackBar('Tree was successfully saved', 'Ok');
   }
 
   removeTrees() {

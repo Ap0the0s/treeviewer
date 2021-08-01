@@ -1,0 +1,41 @@
+<div class="profile-form">
+
+    <h2>You can change your personal data here</h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="text" matInput placeholder="Enter new password" [value]="userData?.password" #password>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput placeholder="Enter your name" [value]="userData?.name || ''" #name>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Enter your email" [value]="userData?.email || ''" #email>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <select matNativeControl #gender [value]="userData?.gender || ''">
+            <option value="">Not selected</option>
+            <option value="1">Female</option>
+            <option value="2">Male</option>
+          </select>
+      </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Birthdate</mat-label>
+        <input matInput [matDatepicker]="picker" #birthdate [value]="datepickerStart">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    <button mat-flat-button color="primary" 
+            [disabled]="!password.value" 
+            (click)="saveUserData(password.value, name.value, email.value, gender.value, birthdate.value)"
+    >Update</button>
+
+</div>

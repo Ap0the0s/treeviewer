@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="login-form">
+
+    <h2>Please enter data to sign in/sign up</h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Login</mat-label>
+        <input type="text" matInput placeholder="Enter your login" value="" #login>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" min="1" matInput placeholder="Enter your password" value="" #password>
+    </mat-form-field>
+    
+    <button mat-flat-button color="primary" 
+            [disabled]="!login.value || !password.value" 
+            (click)="logon(login.value, password.value)"
+    >Enter/Register</button>
+
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
+import { ToolsService } from 'src/app/services/tools.service';
 import { TreeService } from 'src/app/services/tree.service';
 
 @Component({
@@ -9,12 +10,7 @@ import { TreeService } from 'src/app/services/tree.service';
 })
 export class GenerateComponent implements OnInit {
 
-  rootNodes: number = 0;
-  childNodesMin: number = 0;
-  childNodesMax: number = 0;
-  maxNesting: number = 0;
-
-  constructor(private appService: AppService, public treeService: TreeService) { }
+  constructor(private appService: AppService, public treeService: TreeService, private toolsService: ToolsService) { }
 
   ngOnInit(): void { 
     this.treeService.showProgressBar = false;
@@ -31,18 +27,18 @@ export class GenerateComponent implements OnInit {
 
     if(!checkMinValues) {
       error = true;
-      this.appService.openSnackBar('All the values must be at least equals to one', 'Ok');
+      this.toolsService.showSnackBar('All the values must be at least equals to one', 'Ok');
     } else if(min_nested > max_nested) {
       error = true;
-      this.appService.openSnackBar('Min nested nodes count must be less or equal to max count', 'Ok');
+      this.toolsService.showSnackBar('Min nested nodes count must be less or equal to max count', 'Ok');
     }
 
     if(!error) {
       if(this.treeService.buildMockTree(...args)) {
-        this.appService.openSnackBar('Tree was successfully generated', 'Ok');
-        setTimeout(() => this.appService.redirect('display-tree'), 1000);
+        this.toolsService.showSnackBar('Tree was successfully generated', 'Ok');
+        setTimeout(() => this.toolsService.redirect('display-tree'), 1000);
       } else {
-        this.appService.openSnackBar('An error occured, try again', 'Ok');
+        this.toolsService.showSnackBar('An error occured, try again', 'Ok');
       }
     }
 
